@@ -4,24 +4,20 @@ import java.time.Duration;
 import java.util.Date;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC_RF_001 {
-
+public class TC_RF_003 {
 	@Test
-	public static void verifyRegisterWithMandatoryFields() {
-		// TODO Auto-generated method stub
-		ChromeDriver driver = new ChromeDriver();
-		//		SET UP	
-		// // thời gian chờ tối đa cho element xuất hiện
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+	public void verifyRegisterWithAllFields() {
+		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		driver.get("https://tutorialsninja.com/demo/");
 		
-		// click dropdown button
-		driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul/li[2]/a/span[1]")).click();
+		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
 		
 		driver.findElement(By.id("input-firstname")).sendKeys("Co");
@@ -30,6 +26,7 @@ public class TC_RF_001 {
 		driver.findElement(By.id("input-telephone")).sendKeys("0123456789");
 		driver.findElement(By.id("input-password")).sendKeys("123456");
 		driver.findElement(By.id("input-confirm")).sendKeys("123456");
+		driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).click();
 		driver.findElement(By.name("agree")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 		
@@ -51,5 +48,4 @@ public class TC_RF_001 {
 		String emailWithTimeStamp = noSpaceAndnoColonsDateString + "@gmail.com";
 		return emailWithTimeStamp;
 	}
-
 }
