@@ -2,16 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-23T16:47:29 ICT" name="Default suite" finished-at="2025-06-23T16:47:35 ICT" duration-ms="6582">
+  <suite started-at="2025-06-24T00:34:20 ICT" name="Default suite" finished-at="2025-06-24T00:34:24 ICT" duration-ms="4055">
     <groups>
     </groups>
-    <test started-at="2025-06-23T16:47:29 ICT" name="Default test" finished-at="2025-06-23T16:47:35 ICT" duration-ms="6582">
-      <class name="automation.register.TC_RF_003">
-        <test-method signature="verifyRegisterWithAllFields()[pri:0, instance:automation.register.TC_RF_003@506ae4d4]" started-at="2025-06-23T16:47:29 ICT" name="verifyRegisterWithAllFields" finished-at="2025-06-23T16:47:35 ICT" duration-ms="6546" status="PASS">
+    <test started-at="2025-06-24T00:34:20 ICT" name="Default test" finished-at="2025-06-24T00:34:24 ICT" duration-ms="4055">
+      <class name="automation.register.TC_RF_001">
+        <test-method is-config="true" signature="setup()[pri:0, instance:automation.register.TC_RF_001@2e385cce]" started-at="2025-06-24T00:34:20 ICT" name="setup" finished-at="2025-06-24T00:34:22 ICT" duration-ms="2424" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyRegisterWithAllFields -->
-      </class> <!-- automation.register.TC_RF_003 -->
+        </test-method> <!-- setup -->
+        <test-method signature="verifyRegisterWithMandatoryFields()[pri:0, instance:automation.register.TC_RF_001@2e385cce]" started-at="2025-06-24T00:34:22 ICT" name="verifyRegisterWithMandatoryFields" finished-at="2025-06-24T00:34:24 ICT" duration-ms="1480" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyRegisterWithMandatoryFields -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:automation.register.TC_RF_001@2e385cce]" started-at="2025-06-24T00:34:24 ICT" name="tearDown" finished-at="2025-06-24T00:34:24 ICT" duration-ms="120" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- automation.register.TC_RF_001 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

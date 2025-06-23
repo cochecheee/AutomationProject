@@ -1,32 +1,47 @@
 package automation.register;
 
-import java.time.Duration;
-import java.util.Date;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
+
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TC_RF_001 {
+import automation.base.Base;
+import automation.utils.CommonUtils;
+import automation.utils.pages.LandingPage;
+import automation.utils.pages.RegisterPage;
 
+public class TC_RF_001 extends Base{
+	private WebDriver driver;
+	private LandingPage landingPage;
+	private RegisterPage registerPage;
+	
+	@BeforeMethod
+	public void setup() {
+		
+		// choosing driver
+		driver = openBrowserAndApplication();
+		landingPage = new LandingPage(driver);
+		
+		landingPage.clickOnAccountDropDownMenu();
+		registerPage = landingPage.clickOnRegisterOption();
+	}
+	
+	@AfterTest
+	public void tearDown() {
+		if(driver != null) {
+			driver.quit();
+		}
+	}
+	
 	@Test
-	public static void verifyRegisterWithMandatoryFields() {
-		// TODO Auto-generated method stub
-		ChromeDriver driver = new ChromeDriver();
-		//		SET UP	
-		// // thời gian chờ tối đa cho element xuất hiện
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		driver.manage().window().maximize();
-		driver.get("https://tutorialsninja.com/demo/");
+	public void verifyRegisterWithMandatoryFields() {
 		
-		// click dropdown button
-		driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul/li[2]/a/span[1]")).click();
-		driver.findElement(By.linkText("Register")).click();
-		
-		driver.findElement(By.id("input-firstname")).sendKeys("Co");
-		driver.findElement(By.id("input-lastname")).sendKeys("cheche");
-		driver.findElement(By.id("input-email")).sendKeys(generateNewEmail());
+		registerPage.enterFirstName("Co");
+		registerPage.enterLastName("cheche");
+		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateNewEmail());
 		driver.findElement(By.id("input-telephone")).sendKeys("0123456789");
 		driver.findElement(By.id("input-password")).sendKeys("123456");
 		driver.findElement(By.id("input-confirm")).sendKeys("123456");
@@ -42,14 +57,6 @@ public class TC_RF_001 {
 		driver.findElement(By.xpath("//a[text()='Continue']")).click();
 		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed());
 		
-		driver.quit();
-	}
-	
-	public static String generateNewEmail() {
-		String noSpaceDateString = new Date().toString().replaceAll("\\s", "");
-		String noSpaceAndnoColonsDateString = noSpaceDateString.replaceAll("\\:", "");
-		String emailWithTimeStamp = noSpaceAndnoColonsDateString + "@gmail.com";
-		return emailWithTimeStamp;
 	}
 
 }

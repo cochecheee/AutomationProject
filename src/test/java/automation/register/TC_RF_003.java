@@ -1,28 +1,40 @@
 package automation.register;
 
-import java.time.Duration;
-import java.util.Date;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TC_RF_003 {
-	@Test
-	public void verifyRegisterWithAllFields() {
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-		driver.get("https://tutorialsninja.com/demo/");
+import automation.base.Base;
+import automation.utils.CommonUtils;
+
+public class TC_RF_003 extends Base {
+	private WebDriver driver;
+	
+	@BeforeMethod
+	public void setup() {
 		
+		// choosing driver
+		driver = openBrowserAndApplication();		
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
+	}
+	
+	@AfterTest
+	public void tearDown() {
+		if(driver != null) {
+			driver.quit();
+		}
+	}
+	
+	@Test
+	public void verifyRegisterWithAllFields() {
 		
 		driver.findElement(By.id("input-firstname")).sendKeys("Co");
 		driver.findElement(By.id("input-lastname")).sendKeys("cheche");
-		driver.findElement(By.id("input-email")).sendKeys(generateNewEmail());
+		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateNewEmail());
 		driver.findElement(By.id("input-telephone")).sendKeys("0123456789");
 		driver.findElement(By.id("input-password")).sendKeys("123456");
 		driver.findElement(By.id("input-confirm")).sendKeys("123456");
@@ -39,13 +51,6 @@ public class TC_RF_003 {
 		driver.findElement(By.xpath("//a[text()='Continue']")).click();
 		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed());
 		
-		driver.quit();
 	}
-	
-	public static String generateNewEmail() {
-		String noSpaceDateString = new Date().toString().replaceAll("\\s", "");
-		String noSpaceAndnoColonsDateString = noSpaceDateString.replaceAll("\\:", "");
-		String emailWithTimeStamp = noSpaceAndnoColonsDateString + "@gmail.com";
-		return emailWithTimeStamp;
-	}
+
 }
