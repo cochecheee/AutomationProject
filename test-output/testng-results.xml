@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-24T00:34:20 ICT" name="Default suite" finished-at="2025-06-24T00:34:24 ICT" duration-ms="4055">
+  <suite started-at="2025-06-24T14:51:36 ICT" name="Default suite" finished-at="2025-06-24T14:51:40 ICT" duration-ms="3987">
     <groups>
     </groups>
-    <test started-at="2025-06-24T00:34:20 ICT" name="Default test" finished-at="2025-06-24T00:34:24 ICT" duration-ms="4055">
+    <test started-at="2025-06-24T14:51:36 ICT" name="Default test" finished-at="2025-06-24T14:51:40 ICT" duration-ms="3987">
       <class name="automation.register.TC_RF_001">
-        <test-method is-config="true" signature="setup()[pri:0, instance:automation.register.TC_RF_001@2e385cce]" started-at="2025-06-24T00:34:20 ICT" name="setup" finished-at="2025-06-24T00:34:22 ICT" duration-ms="2424" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:automation.register.TC_RF_001@2e385cce]" started-at="2025-06-24T14:51:36 ICT" name="setup" finished-at="2025-06-24T14:51:38 ICT" duration-ms="2583" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyRegisterWithMandatoryFields()[pri:0, instance:automation.register.TC_RF_001@2e385cce]" started-at="2025-06-24T00:34:22 ICT" name="verifyRegisterWithMandatoryFields" finished-at="2025-06-24T00:34:24 ICT" duration-ms="1480" status="PASS">
+        <test-method signature="verifyRegisterWithMandatoryFields()[pri:0, instance:automation.register.TC_RF_001@2e385cce]" started-at="2025-06-24T14:51:38 ICT" name="verifyRegisterWithMandatoryFields" finished-at="2025-06-24T14:51:40 ICT" duration-ms="1245" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyRegisterWithMandatoryFields -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:automation.register.TC_RF_001@2e385cce]" started-at="2025-06-24T00:34:24 ICT" name="tearDown" finished-at="2025-06-24T00:34:24 ICT" duration-ms="120" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:automation.register.TC_RF_001@2e385cce]" started-at="2025-06-24T14:51:40 ICT" name="tearDown" finished-at="2025-06-24T14:51:40 ICT" duration-ms="130" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

@@ -1,6 +1,5 @@
 package automation.register;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import org.testng.Assert;
@@ -10,6 +9,8 @@ import org.testng.annotations.Test;
 
 import automation.base.Base;
 import automation.utils.CommonUtils;
+import automation.utils.pages.AccountPage;
+import automation.utils.pages.AccountSuccessPage;
 import automation.utils.pages.LandingPage;
 import automation.utils.pages.RegisterPage;
 
@@ -17,6 +18,8 @@ public class TC_RF_001 extends Base{
 	private WebDriver driver;
 	private LandingPage landingPage;
 	private RegisterPage registerPage;
+	private AccountSuccessPage accountSuccessPage;
+	private AccountPage accountPage;
 	
 	@BeforeMethod
 	public void setup() {
@@ -41,21 +44,22 @@ public class TC_RF_001 extends Base{
 		
 		registerPage.enterFirstName("Co");
 		registerPage.enterLastName("cheche");
-		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateNewEmail());
-		driver.findElement(By.id("input-telephone")).sendKeys("0123456789");
-		driver.findElement(By.id("input-password")).sendKeys("123456");
-		driver.findElement(By.id("input-confirm")).sendKeys("123456");
-		driver.findElement(By.name("agree")).click();
-		driver.findElement(By.xpath("//input[@value='Continue']")).click();
+		registerPage.enterEmail(CommonUtils.generateNewEmail());
+		registerPage.enterTelephone("012345604");
+		registerPage.enterPassword("123456");
+		registerPage.enterConfirmPassword("123456");
 		
-		Assert.assertTrue(driver.findElement(By.linkText("Logout")).isDisplayed());
+		registerPage.checkPrivacyPolicy();
+		accountSuccessPage = registerPage.clickOnContinueBtn();
+		
+		Assert.assertTrue(accountSuccessPage.isLogoutDisplayed());
 		
 		String expectedHeading = "Your Account Has Been Created!";
 		
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='common-success']//h1")).getText(), expectedHeading);
+		Assert.assertEquals(accountSuccessPage.getPageHeadingText(), expectedHeading);
 		
-		driver.findElement(By.xpath("//a[text()='Continue']")).click();
-		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed());
+		accountPage = accountSuccessPage.clickOnContinue();
+		Assert.assertTrue(accountPage.isAccountPageDisplayed());
 		
 	}
 
