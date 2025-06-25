@@ -1,6 +1,5 @@
 package automation.test;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -65,25 +64,47 @@ public class Register extends Base {
 	
 	@Test(priority=2)
 	public void verifyRegisterWithAllFields() {
+		registerPage.enterFirstName("Co");
+		registerPage.enterLastName("cheche");
+		registerPage.enterEmail(CommonUtils.generateNewEmail());
+		registerPage.enterTelephone("01235434232");
+		registerPage.enterPassword("123456");
+		registerPage.enterConfirmPassword("123456");
 		
-		driver.findElement(By.id("input-firstname")).sendKeys("Co");
-		driver.findElement(By.id("input-lastname")).sendKeys("cheche");
-		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateNewEmail());
-		driver.findElement(By.id("input-telephone")).sendKeys("0123456789");
-		driver.findElement(By.id("input-password")).sendKeys("123456");
-		driver.findElement(By.id("input-confirm")).sendKeys("123456");
-		driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).click();
-		driver.findElement(By.name("agree")).click();
-		driver.findElement(By.xpath("//input[@value='Continue']")).click();
+		registerPage.checkNewsLetterOption();
+		registerPage.checkPrivacyPolicy();
+		accountSuccessPage = registerPage.clickOnContinueBtn();
 		
-		Assert.assertTrue(driver.findElement(By.linkText("Logout")).isDisplayed());
+		Assert.assertTrue(accountSuccessPage.isLogoutDisplayed());
 		
 		String expectedHeading = "Your Account Has Been Created!";
 		
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='common-success']//h1")).getText(), expectedHeading);
+		Assert.assertEquals(accountSuccessPage.getPageHeadingText(), expectedHeading);
 		
-		driver.findElement(By.xpath("//a[text()='Continue']")).click();
-		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed());
+		accountPage = accountSuccessPage.clickOnContinue();
+		Assert.assertTrue(accountPage.isAccountPageDisplayed());
+	}
+	
+	@Test(priority = 3)
+	public void verifyRegisterWithoutFillFields() {
+		// click on continue button
+		registerPage.clickOnContinueBtn();
+		
+		String firstNameWarning = "First Name must be between 1 and 32 characters!";
+		String lastNameWarning = "Last Name must be between 1 and 32 characters!";
+		String emailWarning = "E-Mail Address does not appear to be valid!";
+		String telephoneWarning = "Telephone must be between 3 and 32 characters!";
+		String passwordWarning = "Password must be between 4 and 20 characters!";
+		String privacyPolicyWarning = "Warning: You must agree to the Privacy Policy!";
+		
+		// "//input[@id='input-firstname']/following-sibling::div"
+		Assert.assertEquals(registerPage.getFirstNameWarning(), firstNameWarning);
+		Assert.assertEquals(registerPage.getLastNameWarning(), lastNameWarning);
+		Assert.assertEquals(registerPage.getEmailWarning(), emailWarning);
+		Assert.assertEquals(registerPage.getTelephoneWarning(), telephoneWarning);
+		Assert.assertEquals(registerPage.getPasswordWarning(), passwordWarning);
+		Assert.assertEquals(registerPage.getPrivacyPolicyWarning(), privacyPolicyWarning);
+		
 	}
 
 }

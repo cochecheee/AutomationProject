@@ -57,9 +57,51 @@ public class RegisterPage {
 	}
 
 	@FindBy(xpath = "//input[@value='Continue']")
-	public WebElement continueButton;
+	private WebElement continueButton;
 	public AccountSuccessPage clickOnContinueBtn() {
 		continueButton.click();
 		return new AccountSuccessPage(driver);
+	}
+	
+	@FindBy(xpath="//input[@name='newsletter'][@value='1']")
+	public WebElement newsLetterOption;
+	public void checkNewsLetterOption() {
+		newsLetterOption.click();
+	}
+	
+	@FindBy(xpath="//input[@id='input-firstname']/following-sibling::div")
+	private WebElement firstNameWarning;
+	public String getFirstNameWarning() {
+		return firstNameWarning.getText();
+	}
+	
+	@FindBy(xpath="//input[@id='input-lastname']/following-sibling::div")
+	private WebElement lastNameWarning;
+	public String getLastNameWarning() {
+		return lastNameWarning.getText();
+	}
+	
+	@FindBy(xpath="//input[@id='input-email']/following-sibling::div")
+	private WebElement emailWarning;
+	public String getEmailWarning() {
+		return emailWarning.getText();
+	}
+	
+	@FindBy(xpath="//input[@id='input-telephone']/following-sibling::div")
+	private WebElement telephoneWarning;
+	public String getTelephoneWarning() {
+		return telephoneWarning.getText();
+	}
+	
+	@FindBy(xpath="//input[@id='input-password']/following-sibling::div")
+	private WebElement passwordWarning;
+	public String getPasswordWarning() {
+		return passwordWarning.getText();
+	}
+	
+	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")
+	private WebElement privacyPolicyWarning;
+	public String getPrivacyPolicyWarning() {
+		return privacyPolicyWarning.getText();
 	}
 }
