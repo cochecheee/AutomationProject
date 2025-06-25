@@ -1,4 +1,4 @@
-package automation.test;
+package automation.register;
 
 import org.openqa.selenium.WebDriver;
 
@@ -9,10 +9,10 @@ import org.testng.annotations.Test;
 
 import automation.base.Base;
 import automation.utils.CommonUtils;
-import automation.utils.pages.AccountPage;
-import automation.utils.pages.AccountSuccessPage;
-import automation.utils.pages.LandingPage;
-import automation.utils.pages.RegisterPage;
+import automation.pages.AccountPage;
+import automation.pages.AccountSuccessPage;
+import automation.pages.LandingPage;
+import automation.pages.RegisterPage;
 
 public class TC_RF_001 extends Base{
 	private WebDriver driver;
