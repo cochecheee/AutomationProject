@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="automation.register.TC_RF_001">
+      <class name="automation.register.TC_RF_004">
         <methods>
-          <include name="setup"/>
-          <include name="verifyRegisterWithMandatoryFields"/>
+          <include name="verifyRegisterWithoutFillFields"/>
           <include name="tearDown"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- automation.register.TC_RF_001 -->
+      </class> <!-- automation.register.TC_RF_004 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

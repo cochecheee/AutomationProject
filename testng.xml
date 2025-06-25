@@ -5,6 +5,7 @@
     <classes>
       <class name="automation.register.TC_RF_001"/>
       <class name="automation.register.TC_RF_003"/>
+      <class name="automation.register.TC_RF_004"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
