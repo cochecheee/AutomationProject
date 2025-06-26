@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-25T22:57:47 ICT" name="Default suite" finished-at="2025-06-25T22:57:50 ICT" duration-ms="3025">
+  <suite started-at="2025-06-26T11:57:43 ICT" name="Default suite" finished-at="2025-06-26T11:57:47 ICT" duration-ms="4069">
     <groups>
     </groups>
-    <test started-at="2025-06-25T22:57:47 ICT" name="Default test" finished-at="2025-06-25T22:57:50 ICT" duration-ms="3025">
+    <test started-at="2025-06-26T11:57:43 ICT" name="Default test" finished-at="2025-06-26T11:57:47 ICT" duration-ms="4069">
       <class name="automation.test.Register">
-        <test-method is-config="true" signature="setup()[pri:0, instance:automation.test.Register@740cae06]" started-at="2025-06-25T22:57:47 ICT" name="setup" finished-at="2025-06-25T22:57:50 ICT" duration-ms="2419" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:automation.test.Register@26d9b808]" started-at="2025-06-26T11:57:43 ICT" name="setup" finished-at="2025-06-26T11:57:46 ICT" duration-ms="2388" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyRegisterWithoutFillFields()[pri:3, instance:automation.test.Register@740cae06]" started-at="2025-06-25T22:57:50 ICT" name="verifyRegisterWithoutFillFields" finished-at="2025-06-25T22:57:50 ICT" duration-ms="453" status="PASS">
+        <test-method signature="verifyRegisteringAccountBySubscribingToNewsletter()[pri:4, instance:automation.test.Register@26d9b808]" started-at="2025-06-26T11:57:46 ICT" name="verifyRegisteringAccountBySubscribingToNewsletter" finished-at="2025-06-26T11:57:47 ICT" duration-ms="1493" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyRegisterWithoutFillFields -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:automation.test.Register@740cae06]" started-at="2025-06-25T22:57:50 ICT" name="tearDown" finished-at="2025-06-25T22:57:50 ICT" duration-ms="117" status="PASS">
+        </test-method> <!-- verifyRegisteringAccountBySubscribingToNewsletter -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:automation.test.Register@26d9b808]" started-at="2025-06-26T11:57:47 ICT" name="tearDown" finished-at="2025-06-26T11:57:47 ICT" duration-ms="154" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

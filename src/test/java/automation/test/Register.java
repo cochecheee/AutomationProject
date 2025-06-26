@@ -11,6 +11,7 @@ import automation.utils.CommonUtils;
 import automation.pages.AccountPage;
 import automation.pages.AccountSuccessPage;
 import automation.pages.LandingPage;
+import automation.pages.NewsLetterPage;
 import automation.pages.RegisterPage;
 
 public class Register extends Base {
@@ -20,6 +21,7 @@ public class Register extends Base {
 	private RegisterPage registerPage;
 	private AccountSuccessPage accountSuccessPage;
 	private AccountPage accountPage;
+	private NewsLetterPage newsLetterPage;
 	
 	@BeforeMethod
 	public void setup() {
@@ -106,5 +108,25 @@ public class Register extends Base {
 		Assert.assertEquals(registerPage.getPrivacyPolicyWarning(), privacyPolicyWarning);
 		
 	}
-
+	
+	@Test(priority = 4)
+	public void verifyRegisteringAccountBySubscribingToNewsletter() {
+		
+		registerPage.enterFirstName("Co");
+		registerPage.enterLastName("cheche");
+		registerPage.enterEmail(CommonUtils.generateNewEmail());
+		registerPage.enterTelephone("01235434232");
+		registerPage.enterPassword("123456");
+		registerPage.enterConfirmPassword("123456");
+		
+		registerPage.checkNewsLetterOption();
+		registerPage.checkPrivacyPolicy();
+		
+		accountSuccessPage = registerPage.clickOnContinueBtn();
+		accountPage = accountSuccessPage.clickOnContinue();
+		newsLetterPage = accountPage.clickOnNewsletterOption();
+		
+		Assert.assertTrue(newsLetterPage.isNewsLetterPageDisplayed());
+		Assert.assertTrue(newsLetterPage.isSubcribingOptionSelected());
+	}
 }

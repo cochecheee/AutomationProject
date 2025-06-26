@@ -17,4 +17,11 @@ public class AccountPage {
 	public boolean isAccountPageDisplayed() {
 		return editAccountOption.isDisplayed();
 	}
+	
+	@FindBy(linkText = "Subscribe / unsubscribe to newsletter")
+	private WebElement newsLetterOption;
+	public NewsLetterPage clickOnNewsletterOption() {
+		newsLetterOption.click();
+		return new NewsLetterPage(driver);
+	}
 }
